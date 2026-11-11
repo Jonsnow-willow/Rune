@@ -19,9 +19,8 @@ The [deployment guide](deployment.md) explains how to export native text potenti
 Use the [ASE interface](inference.md) for prediction and the
 [training guide](training.md) to prepare runs with your own labeled data.
 
-The [technical report](../paper/paper.md) describes the software, model family,
-training routes, validation, and benchmark results. A [PDF](../paper/paper.pdf) is generated
-from the same report source.
+The [technical report](paper.pdf) describes the software, model family,
+training routes, validation, and benchmark results.
 
 ## Package organization
 

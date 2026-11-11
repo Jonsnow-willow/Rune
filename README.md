@@ -132,5 +132,5 @@ directory automatically.
 | Export and GPUMD compilation | [Deployment](docs/deployment.md) |
 | Model architecture | [Architecture](docs/architecture.md) |
 | Trained weights and results | [Models](models/README.md) |
-| Paper, validation, and benchmarks | [Paper](paper/README.md) |
+| Paper, validation, and benchmarks | [Paper](docs/paper.pdf) |
 | Full guide | [Documentation](docs/README.md) |
