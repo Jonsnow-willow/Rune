@@ -1,0 +1,35 @@
+[build-system]
+requires = ["setuptools>=77"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "rune-mlff"
+dynamic = ["version"]
+description = "RUNE machine-learning force-field training and inference"
+readme = "README.md"
+requires-python = ">=3.10"
+license-files = ["LICENSE"]
+dependencies = [
+    "ase>=3.22",
+    "numpy>=1.23",
+    "torch>=2.0",
+    "tomli>=2; python_version < '3.11'",
+]
+
+[project.scripts]
+rune = "rune.cli.run:main"
+
+[tool.setuptools]
+include-package-data = false
+
+[tool.setuptools.dynamic]
+version = {attr = "rune.__version__"}
+
+[tool.setuptools.packages.find]
+where = ["."]
+include = ["rune", "rune.*"]
+exclude = ["rune.mobius.src"]
+namespaces = true
+
+[tool.setuptools.package-data]
+"rune.mobius" = ["src/*.cu", "src/*.cuh"]

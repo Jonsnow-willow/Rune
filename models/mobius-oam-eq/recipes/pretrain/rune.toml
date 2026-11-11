@@ -1,0 +1,90 @@
+# Pretraining: 16 GPUs x batch 16 x accumulation 1 = 256 structures.
+[model]
+plugin = "rune.mobius"
+
+[model.params]
+elements = [
+  "H", "He", "Li", "Be", "B", "C", "N", "O", "F", "Ne",
+  "Na", "Mg", "Al", "Si", "P", "S", "Cl", "Ar", "K", "Ca",
+  "Sc", "Ti", "V", "Cr", "Mn", "Fe", "Co", "Ni", "Cu", "Zn",
+  "Ga", "Ge", "As", "Se", "Br", "Kr", "Rb", "Sr", "Y", "Zr",
+  "Nb", "Mo", "Tc", "Ru", "Rh", "Pd", "Ag", "Cd", "In", "Sn",
+  "Sb", "Te", "I", "Xe", "Cs", "Ba", "La", "Ce", "Pr", "Nd",
+  "Pm", "Sm", "Eu", "Gd", "Tb", "Dy", "Ho", "Er", "Tm", "Yb",
+  "Lu", "Hf", "Ta", "W", "Re", "Os", "Ir", "Pt", "Au", "Hg",
+  "Tl", "Pb", "Bi", "Ac", "Th", "Pa", "U", "Np", "Pu",
+]
+zbl = [1.0, 2.0]
+rcut_radial = 6.0
+rcut_angular = 5.0
+n_max_radial = 12
+n_max_angular = 8
+basis_size_radial = 16
+basis_size_angular = 12
+l_max = 4
+l_max_4body = 2
+l_max_5body = 1
+has_q_112 = 1
+has_q_123 = 1
+has_q_233 = 1
+has_q_134 = 1
+hidden_dim = 256
+blocks = 4
+ffn_dim = 512
+activation = "silu"
+message_layers = 2
+message_mode = "equivariant"
+equivariant_channels = 32
+equivariant_l_max = 4
+message_dim = 192
+pair_dim = 16
+message_groups = 8
+message_basis_size = 17
+message_cutoff = 6.0
+norm_eps = 1.0e-8
+max_neighbors_radial = 819
+max_neighbors_angular = 819
+
+[data]
+train_file = "../../data/omat24.xyz"
+data_format = "lazy_xyz"
+frame_stride = 1
+batch_size = 16
+num_workers = 4
+pin_memory = "auto"
+persistent_workers = "auto"
+prefetch_factor = 2
+shuffle = true
+index_dir = ".rune_index"
+cache_index = true
+
+[optimizer]
+name = "adamw"
+epochs = 6
+learning_rate = 1.0e-3
+weight_decay = 1.0e-4
+beta1 = 0.9
+beta2 = 0.999
+eps = 1.0e-8
+
+[scheduler]
+# New six-epoch cosine schedule, stepped at epoch boundaries.
+name = "cosine"
+min_learning_rate = 1.0e-5
+
+[loss]
+energy = 1.0
+forces = 1.0
+virial = 0.1
+
+[runtime]
+device = "cuda"
+seed = 42
+save_every = 1
+keep_every = 1
+export_every = 0
+progress_log_interval = 100
+compute_descriptor_scaler_once = true
+descriptor_scaler_max_batches = 128
+gradient_accumulation_steps = 1
+gradient_clip_norm = 5.0
