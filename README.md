@@ -123,6 +123,12 @@ use the standard `nep.txt` path and do not require the Möbius adapter. Native
 inference does not require Python or PyTorch. The exporter creates the output
 directory automatically.
 
+## Authors:
+
+| Name                  | contact                           |
+| --------------------- | --------------------------------- |
+| Jiahui Liu            | liujiahui@zgci.ac.cn              |
+
 ## Documentation and report
 
 | Topic | Entry |
