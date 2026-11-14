@@ -8,6 +8,7 @@ dynamic = ["version"]
 description = "RUNE machine-learning force-field training and inference"
 readme = "README.md"
 requires-python = ">=3.10"
+license = "LGPL-3.0-only"
 license-files = ["LICENSE"]
 dependencies = [
     "ase>=3.22",

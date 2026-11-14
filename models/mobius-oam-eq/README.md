@@ -72,6 +72,11 @@ The supplied `model.pt` can initialize a [new fine-tuning stage](../../docs/trai
 scheduler, RNG and run configuration, so it does not resume the full original
 training state.
 
+## License
+
+The `model.pt` inference checkpoint is released under
+[CC-BY-4.0](https://creativecommons.org/licenses/by/4.0/legalcode). 
+
 ## Matbench Discovery
 
 | Metric | Value |
